@@ -1,0 +1,61 @@
+{% extends 'student/dashboard.html' %}
+{% block navbar %}
+  {% include 'student/navbar.html' with home="active" home_aria="page" profile_picture=student_data.profile_picture  %}
+{% endblock %}
+
+{% block left-bar %}
+  {% include 'student/left-bar.html' with home="active" home_aria="page" profile_picture=student_data.profile_picture full_name=student_data.first_name|add:' '|add:student_data.last_name%}
+{% endblock %}
+
+{% block main %}
+<!-- ABOUT -->
+  
+<div class="d-flex flex-column bg-light m-2 p-3 rounded">
+  <div>
+    <h1>About</h1>
+  </div>
+  <hr>
+  <div>
+  <table class="table-sm table-borderless">
+    <tbody>
+      {% if student_data %}
+      <tr>
+        <th scope="row">Name</th>
+        <td><span class="text-capitalize">{{ student_data.first_name }} {{ student_data.last_name }}</span></td>
+      </tr>
+      
+      <tr>
+        <th scope="row">Email</th>
+        <td>{{ student_data.email }}</td>
+      </tr>
+      <tr>
+        <th scope="row">Phone</th>
+        <td>{{ student_data.phone }}</td>
+      </tr>
+      <tr>
+        <th scope="row">Address</th>
+        <td><span class="text-capitalize">{{ student_data.address }}</span></td>
+      </tr>
+      {% endif %}
+    </tbody>
+  </table>
+  </div>
+</div>
+<!-- END ABOUT-->
+
+<!-- Recent Projects -->
+<div class="d-flex flex-column bg-body-secondary m-2 p-3 rounded">
+  <h1>Recent Projects</h1>
+  <hr>
+ 
+  <table class="table-sm table-borderless">
+    <tbody>
+      <tr>
+        <th scope="row">Project Name</th>
+        <td>Project Description</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+<!-- END RECENT PROJECTS-->
+{% endblock %}

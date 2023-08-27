@@ -1,0 +1,66 @@
+{% extends 'student/dashboard.html' %}
+{% load static %}
+
+{% block navbar %}
+  {% include 'student/navbar.html' %}
+{% endblock %}
+
+{% block left-bar %}
+  {% include 'student/left-bar.html' %}
+{% endblock %}
+
+
+{% block main %}
+<div class="d-flex flex-column bg-light m-2 p-3 rounded">
+  <div>
+    <h1>Edit Profile</h1>
+  </div>
+  <hr>
+  {{ form.errors }}
+  {% if student_data %}
+  <form method="POST">
+    {% csrf_token %}
+    <div class="form-group">
+      <div class="row">
+        <div class="col">
+          <label for="first-name">First Name</label>
+          <input id="first-name" name="{{ form.first_name.html_name }}" type="text" class="form-control" placeholder="{{ student_data.first_name }}" value="{{ student_data.first_name }}">
+        </div>
+        <div class="col">
+          <label for="last-name">Last Name</label>
+          <input id="last-name" name="{{ form.last_name.html_name }}" type="text" class="form-control" placeholder="{{ student_data.last_name }}" value="{{ student_data.last_name }}">
+        </div>
+      </div>
+    </div>
+
+    <div class="form-group">
+      {{ form.birthday.label }}
+      {{ form.birthday }}
+    </div>
+    <div class="form-group">
+      <label for="phone-number">Phone Number</label>
+      <input id="phone-number" name="{{ form.phone.html_name }}" type="text" class="form-control" placeholder="{{ student_data.phone }}" value="{{ student_data.phone }}">
+    </div>
+    <div class="form-group">
+      <label for="address">Address</label>
+      <input id="address" name="{{ form.address.html_name }}" type="text" class="form-control" placeholder="{{ student_data.address }}" value="{{ student_data.address }}">
+    </div>
+
+    <hr>
+    <div class="mt-2">
+      <button type="submit" class="btn btn-danger">Save changes</button>
+      <button id="cancelButton" class="btn" onclick="cancelForm()">Cancel</button>
+    </div>
+  </form>
+
+
+  {% endif %}
+  <script>
+    function cancelForm() {
+      // Redirect to a different page
+      event.preventDefault()
+      window.location.href = '{% url 'student_profile' %}'; // Replace with the desired URL
+    }
+  </script>
+</div>
+{% endblock %}

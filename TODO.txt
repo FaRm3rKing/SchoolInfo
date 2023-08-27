@@ -1,0 +1,23 @@
+login - DONE
+register - DONE
+login_design - ACCEPTABLE
+register_deign - ACCEPTABLE
+study in detail about the authentication process - NOT IN DETAIL BUT BETTER DONE NOT DOING IT AT ALL
+add first and last name in registration - DONE
+add gender - DONE
+
+class based views? writing user_pass_test and login_required to each view function is not scalable, I might miss some views
+
+adding mongodb data to sessions?
+
+error messages
+
+update details (profile settings) - IN PROGRESS
+
+
+
+
+use the class to get in search
+use the class to add update delete student
+
+

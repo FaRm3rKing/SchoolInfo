@@ -1,0 +1,36 @@
+{% load static %}
+<div class="d-flex flex-column flex-shrink-0 bg-light p-3 vh-100" style="width: 280px;">
+      <div class="text-center">
+        <img class="rounded-circle w-50" src="{% static 'img/'|add:student_data.profile_picture %}" alt="account profile image">
+        <h1 class="text-break text-capitalize fs-3 mt-2">{{ student_data.first_name|add:' '|add:student_data.last_name }}</h1>
+      </div>
+      <hr>
+      <ul class="nav nav-pills flex-column">
+        <li class="nav-item">
+          <a href="{% url 'student_home' %}" class="nav-link link-body-emphasis {{ home }}" aria-current="{{ home_aria }}">
+            Home
+          </a>
+        </li>
+        <li>
+          <a href="{% url 'student_work' %}" class="nav-link link-body-emphasis {{ work }}" aria-current="{{ work_aria }}">
+            Work
+          </a>
+        </li>
+        <li>
+          <a href="{% url 'student_support' %}" class="nav-link link-body-emphasis {{ support }}" aria-current="{{ support_aria }}">
+            Support
+          </a>
+        </li>
+        <li>
+          <a href="{% url 'student_settings' %}" class="nav-link link-body-emphasis {{ settings }}" aria-current="{{ settings_aria }}">
+            Settings
+          </a>  
+        </li>
+        <hr>
+        <li>
+          <a href="{% url 'signout' %}" class="nav-link link-body-emphasis">
+            Signout
+          </a>
+        </li>
+      </ul>
+</div>

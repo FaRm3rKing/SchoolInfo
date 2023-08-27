@@ -1,0 +1,66 @@
+{% extends 'student/dashboard.html' %}
+{% load static %}
+
+{% block navbar %}
+  {% include 'student/navbar.html' %}
+{% endblock %}
+
+{% block left-bar %}
+  {% include 'student/left-bar.html' %}
+{% endblock %}
+
+
+{% block main %}
+<div class="d-flex flex-column bg-light m-2 p-3 rounded">
+  <div>
+    <h1>Profile</h1>
+  </div>
+  <hr>
+  {% if student_data %}
+  <div class="d-flex align-items-center">
+    <img class="rounded-circle" style="height:10em;width:10em;" src="{% static 'img/'|add:student_data.profile_picture %}" alt="Account profile picture">
+    <h2 class="text-capitalize">{{ student_data.first_name }} {{ student_data.last_name }}</h2>
+  </div>
+
+  <div>
+    <h3>Birthday</h3>
+    <span>{{ student_data.birthday }}</span>
+  </div>
+
+  <div>
+    <h3>Age</h3>
+    <span>{{ student_data.age }}</span>
+  </div>
+
+  <div>
+    <h3>Email</h3>
+    <span>{{ student_data.email }}</span>
+  </div>
+
+  <div>
+    <h3>Phone</h3>
+    <span>{{ student_data.phone }}</span>
+  </div>
+
+  <div>
+    <h3>Address</h3>
+    <span class="text-capitalize">{{ student_data.address }}</span>
+  </div>
+
+  <div class="mt-2">
+      <button class="btn btn-danger" type="submit" onclick="editProfile()">Edit</button>
+  </div>
+
+  {% endif %}
+
+</div>
+
+<script>
+  function editProfile() {
+    // Redirect to a different page
+    //event.preventDefault()
+    window.location.href = '{% url 'edit_profile' %}'; // Replace with the desired URL
+  }
+</script>
+{% endblock %}
+

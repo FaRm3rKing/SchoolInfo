@@ -1,0 +1,18 @@
+{% extends 'student/dashboard.html' %}
+
+{% block navbar %}
+  {% include 'student/navbar.html' with support="active" support_aria="page" %}
+{% endblock %}
+
+{% block left-bar %}
+  {% include 'student/left-bar.html' with support="active" support_aria="page" %}
+{% endblock %}
+
+
+{% block main %}
+<div class="d-flex flex-column bg-light m-2 p-3 rounded">
+  <div>
+    <h1>Support</h1>
+  </div>
+</div>
+{% endblock %}
